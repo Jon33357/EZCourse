@@ -47,7 +47,6 @@ namespace MyEZCourse.Controllers
             //1. Do Something
             var htmlBody = $"<p>{formData.Name} ({formData.Email})</p><p>{formData.Phone}</p><p>{formData.Message}</p>";
             var textBody = "{ formData.Name} ({formData.Email})\r\n{formData.Phone}\r\n{formData.Message}";
-
             _smtpService.SendSingle("Contact Form", htmlBody, textBody, "RM", "noreply@domain.com", "RM", "email@domain.com");
 
             //2. Set Message
