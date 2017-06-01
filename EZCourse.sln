@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EZCourse", "ASP.NET-Core-MVC-Quick-and-Practical-master\EZCourse.csproj", "{3EFE96E0-C954-4673-8FA2-269FB99C2221}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyEZCourse", "MyEZCourse\MyEZCourse.csproj", "{0C887E9F-2CAB-424C-ADE2-AF0F01A2AEC5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3EFE96E0-C954-4673-8FA2-269FB99C2221}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EFE96E0-C954-4673-8FA2-269FB99C2221}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EFE96E0-C954-4673-8FA2-269FB99C2221}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EFE96E0-C954-4673-8FA2-269FB99C2221}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C887E9F-2CAB-424C-ADE2-AF0F01A2AEC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C887E9F-2CAB-424C-ADE2-AF0F01A2AEC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C887E9F-2CAB-424C-ADE2-AF0F01A2AEC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C887E9F-2CAB-424C-ADE2-AF0F01A2AEC5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
