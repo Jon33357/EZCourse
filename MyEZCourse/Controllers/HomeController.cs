@@ -56,8 +56,6 @@ namespace MyEZCourse.Controllers
             }
 
 
-
-
             TempData["Message"] = "Thank You !!!";
             return RedirectToAction("Contact");
         }
