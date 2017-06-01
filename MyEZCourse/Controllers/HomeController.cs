@@ -11,6 +11,13 @@ namespace MyEZCourse.Controllers
 {
     public class HomeController : Controller
     {
+        readonly Services.Smtp _smtpService;
+
+        public HomeController(Services.Smtp smtpService)
+        {
+            _smtpService = smtpService;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -37,26 +44,16 @@ namespace MyEZCourse.Controllers
                 return View(formData);
             }
 
-            using (var client = new SmtpClient())
-            {
-                client.Connect("mail.domain.com");
-                client.Authenticate("username", "pass");
-                var bodybuilder = new BodyBuilder();
-                bodybuilder.HtmlBody = $"<p>{formData.Name} ({formData.Email})</p><p>{formData.Phone}</p><p>{formData.Message}</p>";
-                bodybuilder.TextBody = "{ formData.Name} ({formData.Email})\r\n{formData.Phone}\r\n{formData.Message}";
+            //1. Do Something
+            var htmlBody = $"<p>{formData.Name} ({formData.Email})</p><p>{formData.Phone}</p><p>{formData.Message}</p>";
+            var textBody = "{ formData.Name} ({formData.Email})\r\n{formData.Phone}\r\n{formData.Message}";
 
-                var message = new MimeMessage();
-                message.Body = bodybuilder.ToMessageBody();
-                message.From.Add(new MailboxAddress("RM","noreply@study.com"));
-                message.To.Add(new MailboxAddress("RM", "noreply@study.com"));
-                message.Subject = "Contact Form";
-                client.Send(message);
-                client.Disconnect(true);
+            _smtpService.SendSingle("Contact Form", htmlBody, textBody, "RM", "noreply@domain.com", "RM", "email@domain.com");
 
-            }
-
-
+            //2. Set Message
             TempData["Message"] = "Thank You !!!";
+
+            //3. Redirect the browser
             return RedirectToAction("Contact");
         }
 
