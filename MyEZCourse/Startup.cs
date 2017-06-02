@@ -31,6 +31,10 @@ namespace MyEZCourse
         {
             // Add framework services.
             services.AddMvc();
+
+            services.Configure<SmtpOptions>(Configuration);
+            services.Configure<ContactOptions>(Configuration);
+
             services.AddSingleton<ITempDataProvider, CookieTempDataProvider>();
             services.AddSingleton<Smtp, Smtp>();
         }

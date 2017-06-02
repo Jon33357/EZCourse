@@ -4,21 +4,29 @@ using System.Linq;
 using System.Threading.Tasks;
 using MailKit.Net.Smtp;
 using MimeKit;
+using Microsoft.Extensions.Options;
 
 namespace MyEZCourse.Services
 {
     public class Smtp
     {
+        readonly SmtpOptions _smtpOptions;
+
+
+        public Smtp(IOptions<SmtpOptions> smtpOptions)
+        {
+            _smtpOptions = smtpOptions.Value;
+        }
 
         public void SendSingle(string subject, string htmlBody, string textBody, string toName, string toAddress, string fromName, string fromAddress)
         {
             using (var client = new SmtpClient())
             {
-                client.Connect("imap.gmail.com");
-                client.Authenticate("joao.caselli@lisbonworks.com", "Isel2008");
+                client.Connect(_smtpOptions.SmtpAddress);
+                client.Authenticate(_smtpOptions.SmtpUsername, _smtpOptions.SmtpPassword);
                 var bodybuilder = new BodyBuilder();
-                bodybuilder.HtmlBody = $"<p>{formData.Name} ({formData.Email})</p><p>{formData.Phone}</p><p>{formData.Message}</p>";
-                bodybuilder.TextBody = "{ formData.Name} ({formData.Email})\r\n{formData.Phone}\r\n{formData.Message}";
+                bodybuilder.HtmlBody = htmlBody;
+                bodybuilder.TextBody = textBody;
 
                 var message = new MimeMessage();
                 message.Body = bodybuilder.ToMessageBody();
