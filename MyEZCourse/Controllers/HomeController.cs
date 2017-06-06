@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MyEZCourse.Model;
+using MyEZCourse.Models;
 using MailKit.Net.Smtp;
 using MimeKit;
 using MyEZCourse.Services;
@@ -16,7 +16,7 @@ namespace MyEZCourse.Controllers
         readonly Smtp _smtpService;
         readonly ContactOptions _contactOptions;
 
-        public HomeController(Services.Smtp smtpService, IOptions<ContactOptions> contactOptions)
+        public HomeController(Smtp smtpService, IOptions<ContactOptions> contactOptions)
         {
             _smtpService = smtpService;
             _contactOptions = contactOptions.Value;

@@ -9,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using MyEZCourse.Services;
+using MyEZCourse.Models.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace MyEZCourse
 {
@@ -34,6 +36,9 @@ namespace MyEZCourse
 
             services.Configure<SmtpOptions>(Configuration);
             services.Configure<ContactOptions>(Configuration);
+
+            var connectionString = Configuration.GetConnectionString("EZCourseDatabase");
+            services.AddDbContext<EZCourseContext>(options => options.UseSqlServer(connectionString));
 
             services.AddSingleton<ITempDataProvider, CookieTempDataProvider>();
             services.AddSingleton<Smtp, Smtp>();
