@@ -37,6 +37,7 @@ namespace MyEZCourse
 
             services.AddSingleton<ITempDataProvider, CookieTempDataProvider>();
             services.AddSingleton<Smtp, Smtp>();
+            services.AddSingleton<Criptography>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

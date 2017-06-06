@@ -30,8 +30,8 @@ namespace MyEZCourse.Services
 
                 var message = new MimeMessage();
                 message.Body = bodybuilder.ToMessageBody();
-                message.From.Add(new MailboxAddress("RM", "joao.caselli@lisbonworks.com"));
-                message.To.Add(new MailboxAddress("RM", "joaocaselli@hotmail.com"));
+                message.From.Add(new MailboxAddress(fromName, fromAddress));
+                message.To.Add(new MailboxAddress(toName, toAddress));
                 message.Subject = "Contact Form";
                 client.Send(message);
                 client.Disconnect(true);
